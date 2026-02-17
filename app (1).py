@@ -309,7 +309,7 @@ uploaded_file = st.file_uploader("Upload da Logo", type=['png', 'jpg', 'jpeg', '
 if uploaded_file:
     icon_pil = load_icon_from_base64(ICONE_PADRAO_BASE64)
     
-    if st.button("🚀 Gerar e Simular"):
+    if st.button("🚀 Gerar"):
         # Processamento direto do arquivo único
         logo_pil = Image.open(uploaded_file)
         nome_base = uploaded_file.name.split('.')[0]
@@ -337,7 +337,7 @@ if uploaded_file:
         
         # COLUNA 1: VERTICAL
         with col1: 
-            st.subheader("Totem")
+            st.subheader("Banner Inicial")
             st.image(banner_v, use_container_width=True)
             # Botão de Download Verde e Grande
             st.download_button(
@@ -362,7 +362,7 @@ if uploaded_file:
 
         # COLUNA 3: SIMULAÇÃO + CSS
         with col3:
-            st.subheader("📲 Simulação")
+            st.subheader("Layout")
             html_preview = gerar_preview_html(banner_h, hex_pri, hex_txt)
             components.html(html_preview, height=600, scrolling=True)
             # Botão de Download Verde e Grande
@@ -372,4 +372,5 @@ if uploaded_file:
                 file_name=f"style_{nome_base}.css",
                 mime="text/css"
             )
+
 
