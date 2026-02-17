@@ -67,45 +67,72 @@ def image_to_base64(image):
 def gerar_preview_html(banner_img, primary_color, text_color):
     banner_b64 = image_to_base64(banner_img)
     
-    html = f"""
-    <div style="
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #f4f4f4;
-        border: 8px solid #333;
-        border-radius: 20px;
-        overflow: hidden;
-        max-width: 400px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        margin: auto;">
-        
-        <div style="width: 100%; line-height: 0;">
-            <img src="data:image/png;base64,{banner_b64}" style="width: 100%;">
-        </div>
-
-        <div style="display: flex; height: 350px;">
-            <div style="width: 30%; background: white; padding: 5px; display: flex; flex-direction: column; gap: 5px; border-right: 1px solid #ddd;">
-                <div style="border: 1px solid {primary_color}; color: {primary_color}; border-radius: 5px; padding: 8px 2px; text-align: center; font-size: 10px; font-weight: bold;">Combos</div>
-                <div style="background-color: {primary_color}; color: {text_color}; border-radius: 5px; padding: 15px 2px; text-align: center; font-size: 10px; font-weight: bold;">Burgers</div>
-                <div style="border: 1px solid {primary_color}; color: {primary_color}; border-radius: 5px; padding: 8px 2px; text-align: center; font-size: 10px; font-weight: bold;">Bebidas</div>
+   html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+        body {{ margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: transparent; }}
+        .mockup-container {{
+            background-color: #f4f4f4;
+            border: 8px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 380px;
+            margin: 10px auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }}
+        .banner-box {{ width: 100%; line-height: 0; }}
+        .banner-box img {{ width: 100%; }}
+        .content-box {{ display: flex; height: 350px; }}
+        .menu-lat {{ width: 30%; background: white; padding: 5px; display: flex; flex-direction: column; gap: 5px; border-right: 1px solid #ddd; }}
+        .menu-item {{ border: 1px solid {primary_color}; color: {primary_color}; border-radius: 5px; padding: 8px 2px; text-align: center; font-size: 10px; font-weight: bold; }}
+        .menu-item.active {{ background-color: {primary_color}; color: {text_color}; padding: 15px 2px; }}
+        .products-area {{ width: 70%; padding: 10px; overflow-y: auto; }}
+        .product-card {{ background: white; border-radius: 8px; padding: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; gap: 8px; margin-bottom: 10px; }}
+        .footer {{ background: #222; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }}
+        .btn-confirm {{ background: {primary_color}; color: {text_color}; padding: 6px 15px; border-radius: 4px; font-size: 12px; font-weight: bold; border: none; }}
+    </style>
+    </head>
+    <body>
+        <div class="mockup-container">
+            <div class="banner-box">
+                <img src="data:image/png;base64,{banner_b64}">
             </div>
-
-            <div style="width: 70%; padding: 10px; overflow-y: hidden;">
-                <h4 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">Destaques</h4>
-                <div style="background: white; border-radius: 8px; padding: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; gap: 8px; margin-bottom: 10px;">
-                    <div style="width: 50px; height: 50px; background: #eee; border-radius: 4px;"></div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: bold; font-size: 12px; color: #333;">X-Salada</div>
-                        <div style="font-size: 9px; color: #777; margin-bottom: 4px;">Completo</div>
-                        <div style="font-weight: bold; color: {primary_color}; font-size: 12px;">R$ 28,00</div>
+            <div class="content-box">
+                <div class="menu-lat">
+                    <div class="menu-item">Combos</div>
+                    <div class="menu-item">Burgers</div>
+                    <div class="menu-item active">O Brabo</div>
+                    <div class="menu-item">Bebidas</div>
+                </div>
+                <div class="products-area">
+                    <h4 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">Destaques</h4>
+                    <div class="product-card">
+                        <div style="width: 50px; height: 50px; background: #eee; border-radius: 4px;"></div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: bold; font-size: 12px; color: #333;">X-Salada</div>
+                            <div style="font-size: 9px; color: #777; margin-bottom: 4px;">Completo</div>
+                            <div style="font-weight: bold; color: {primary_color}; font-size: 12px;">R$ 28,00</div>
+                        </div>
+                    </div>
+                     <div class="product-card">
+                        <div style="width: 50px; height: 50px; background: #eee; border-radius: 4px;"></div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: bold; font-size: 12px; color: #333;">Coca</div>
+                            <div style="font-size: 9px; color: #777; margin-bottom: 4px;">Gelada</div>
+                            <div style="font-weight: bold; color: {primary_color}; font-size: 12px;">R$ 6,00</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="footer">
+                <div style="color: white; font-size: 12px;">Total: <b>R$ 0,00</b></div>
+                <button class="btn-confirm">Confirmar</button>
+            </div>
         </div>
-        <div style="background: #222; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="color: white; font-size: 12px;">Total: <b>R$ 0,00</b></div>
-            <div style="background: {primary_color}; color: {text_color}; padding: 6px 15px; border-radius: 4px; font-size: 12px; font-weight: bold;">Confirmar</div>
-        </div>
-    </div>
+    </body>
+    </html>
     """
     return html
 
@@ -258,6 +285,7 @@ if uploaded_logos:
                         st.markdown(html_preview, unsafe_allow_html=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
 
 
