@@ -294,7 +294,7 @@ if uploaded_logos:
                     col1, col2, col3 = st.columns([1, 1, 1.2])
                     
                     with col1: 
-                        st.subheader("Totem")
+                        st.subheader("Banner Inicial")
                         st.image(banner_v, use_container_width=True)
                     
                     with col2:
@@ -308,5 +308,6 @@ if uploaded_logos:
                         components.html(html_preview, height=600, scrolling=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
 
