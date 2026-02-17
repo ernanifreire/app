@@ -315,7 +315,7 @@ if uploaded_file:
     icon_pil = load_icon_from_base64(ICONE_PADRAO_BASE64)
     
     # Botão "Gerar"
-    if st.button("🚀 Gerar e Simular"):
+    if st.button("🚀 Gerar"):
         # Processamento
         logo_pil = Image.open(uploaded_file)
         nome_base = uploaded_file.name.split('.')[0]
@@ -355,7 +355,7 @@ if uploaded_file:
         col1, col2, col3 = st.columns([1, 1, 1.2])
         
         with col1: 
-            st.subheader("Totem")
+            st.subheader("Banner Inicial")
             st.image(data['banner_v'], use_container_width=True)
             st.download_button(
                 label="⬇️ BAIXAR BANNER VERTICAL",
@@ -378,7 +378,7 @@ if uploaded_file:
             )
 
         with col3:
-            st.subheader("📲 Simulação")
+            st.subheader("Layout")
             components.html(data['html_preview'], height=600, scrolling=True)
             st.download_button(
                 label="⬇️ BAIXAR ARQUIVO CSS",
@@ -387,4 +387,5 @@ if uploaded_file:
                 mime="text/css",
                 key="btn_css"
             )
+
 
