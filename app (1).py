@@ -133,7 +133,7 @@ html = f"""
     </body>
     </html>
     """
-return html
+    return html
 def gerar_css_string(logo_img, usar_fundo_branco):
     img = logo_img.convert("RGBA")
     detected_bg = img.getpixel((0, 0))
@@ -283,6 +283,7 @@ if uploaded_logos:
                         st.markdown(html_preview, unsafe_allow_html=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
 
 
