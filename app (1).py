@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFile, ImageOps
 import io
 import zipfile
@@ -206,8 +207,8 @@ def gerar_interno(logo_img, force_white):
 
 # --- INTERFACE PRINCIPAL ---
 
-st.title("📱 Fábrica de Banners + Simulador")
-st.markdown("Veja como seu layout vai ficar na tela do totem!")
+st.title("📱 Fábrica de Banners/Skin")
+components.html("Veja como seu layout vai ficar na tela do totem!")
 
 uploaded_logos = st.file_uploader("Arraste as logos aqui", type=['png', 'jpg', 'jpeg', 'webp'], accept_multiple_files=True)
 
@@ -257,5 +258,6 @@ if uploaded_logos:
                         st.markdown(html_preview, unsafe_allow_html=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
 
