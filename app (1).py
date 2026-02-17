@@ -41,7 +41,7 @@ def carregar_fonte_segura():
 
     # Tenta carregar a Montserrat baixada
     try:
-        return ImageFont.truetype(font_filename, 70)
+        return ImageFont.truetype(font_filename, 50)
     except:
         pass # Se falhar, passa para o Plano B
 
@@ -58,7 +58,7 @@ def carregar_fonte_segura():
     for fonte in fontes_sistema:
         try:
             # Tenta carregar do sistema com tamanho 70
-            return ImageFont.truetype(fonte, 70)
+            return ImageFont.truetype(fonte, 50)
         except:
             continue
 
@@ -232,3 +232,4 @@ if uploaded_logos:
                     with col2: st.image(banner_h, caption="Interno", use_container_width=True)
 
         st.download_button("📦 Baixar ZIP", data=zip_buffer.getvalue(), file_name="banners_prontos.zip", mime="application/zip")
+
