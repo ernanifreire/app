@@ -286,7 +286,7 @@ uploaded_logos = st.file_uploader("Arraste as logos aqui", type=['png', 'jpg', '
 if uploaded_logos:
     icon_pil = load_icon_from_base64(ICONE_PADRAO_BASE64)
     
-    if st.button("🚀 Gerar e Simular"):
+    if st.button("🚀 Gerar"):
         zip_buffer = io.BytesIO()
         progress_bar = st.progress(0)
         
@@ -321,7 +321,7 @@ if uploaded_logos:
                     col1, col2, col3 = st.columns([1, 1, 1.2])
                     
                     with col1: 
-                        st.subheader("Totem")
+                        st.subheader("Banner Inicial")
                         st.image(banner_v, use_container_width=True)
                     
                     with col2:
@@ -330,9 +330,10 @@ if uploaded_logos:
                         st.info(f"🎨 Cor Primária: `{hex_pri}`\n\n🎨 Cor Texto: `{hex_txt}`")
 
                     with col3:
-                        st.subheader("📲 Simulação")
+                        st.subheader("📲 Layout")
                         html_preview = gerar_preview_html(banner_h, hex_pri, hex_txt)
                         components.html(html_preview, height=600, scrolling=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
