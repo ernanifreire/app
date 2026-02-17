@@ -174,11 +174,11 @@ def gerar_vertical(logo_img, icon_pil, txt1, txt2, escala_logo, force_white):
         draw.text(((W-w)/2, y), text, font=font, fill="black")
 
     # --- AQUI ESTÃO OS AJUSTES DE POSIÇÃO (SUBINDO TUDO) ---
-    draw_txt(txt1, footer_y + 100) # Subiu de 140 para 100
-    draw_txt(txt2, footer_y + 160) # Subiu de 210 para 160
+    draw_txt(txt1, footer_y + 120) # Subiu de 140 para 100
+    draw_txt(txt2, footer_y + 180) # Subiu de 210 para 160
     
-    linha_y = footer_y + 250       # Subiu de 300 para 250
-    raio_linha = 110               # Encurtou um pouco para combinar com a fonte menor
+    linha_y = footer_y + 290       # Subiu de 300 para 250
+    raio_linha = 150              # Encurtou um pouco para combinar com a fonte menor
     draw.line((W//2 - raio_linha, linha_y, W//2 + raio_linha, linha_y), fill="black", width=4)
     # -------------------------------------------------------
 
@@ -257,4 +257,5 @@ if uploaded_logos:
                         st.markdown(html_preview, unsafe_allow_html=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
