@@ -108,8 +108,14 @@ def gerar_vertical(logo_img, icon_pil):
         icon = icon.resize((icon_w, icon_h), Image.Resampling.LANCZOS)
         banner.paste(icon, ((W - icon_w)//2, footer_y - (icon_h//2) - 10), icon)
 
-    try: font = ImageFont.truetype("LiberationSans-Bold.ttf", 70)
-    except: font = ImageFont.load_default()
+    # Texto e Fonte (CORREÇÃO AQUI!)
+    try:
+        # Tenta usar uma fonte TTF se houver
+        font = ImageFont.truetype("LiberationSans-Bold.ttf", 70)
+    except:
+        # Se não houver, usa a padrão MAS com um tamanho grande definido
+        # Esta é a correção principal para o texto não ficar pequeno
+        font = ImageFont.load_default(size=70) 
 
     def draw_txt(text, y):
         bbox = draw.textbbox((0,0), text, font=font)
@@ -118,10 +124,12 @@ def gerar_vertical(logo_img, icon_pil):
 
     draw_txt("Toque na tela", footer_y + 180)
     draw_txt("e faça seu pedido!", footer_y + 270)
-    draw.line((W//2 - 200, footer_y + 380, W//2 + 200, footer_y + 380), fill="black", width=5)
+    
+    # Barra (CORREÇÃO AQUI!)
+    # Reduzi a espessura de 5 para 3 para ficar mais harmônico
+    draw.line((W//2 - 200, footer_y + 380, W//2 + 200, footer_y + 380), fill="black", width=3)
     
     return banner
-
 def gerar_interno(logo_img):
     img = logo_img.convert("RGBA")
     if img.width < 500:
@@ -196,3 +204,4 @@ if uploaded_logos:
             file_name="banners_prontos.zip",
             mime="application/zip"
         )
+
