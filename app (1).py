@@ -162,14 +162,23 @@ def gerar_vertical(logo_img, icon_pil):
             w, h = draw.textsize(text, font=font)
         draw.text(((W-w)/2, y), text, font=font, fill="black")
 
+# --- AQUI ESTÃO OS AJUSTES ---
+    
+    # 1. TEXTO MAIS PRA CIMA
+    # Antes era + 180. Mudei para + 140 (sobe 40 pixels)
     draw_txt("Toque na tela", footer_y + 140)
+    
+    # Antes era + 270. Mudei para + 210 (sobe e aproxima da linha de cima)
     draw_txt("e faça seu pedido!", footer_y + 210)
     
-    # Barra (Espessura 3)
-
+    # 2. LINHA (TRAÇO)
+    # Posição Y (Altura): Antes era + 380. Mudei para + 300 (sobe bastante)
+    # Comprimento: Antes era 200. Mudei para 130 (fica mais curta)
+    
     linha_y = footer_y + 300  # Altura da linha
     raio_linha = 130          # Metade do comprimento da linha
-  draw.line(
+    
+    draw.line(
         (W//2 - raio_linha, linha_y, W//2 + raio_linha, linha_y), 
         fill="black", 
         width=5  # Grossura da linha (mantenha ou diminua se quiser)
@@ -239,5 +248,6 @@ if uploaded_logos:
                     with col2: st.image(banner_h, caption="Interno", use_container_width=True)
 
         st.download_button("📦 Baixar ZIP", data=zip_buffer.getvalue(), file_name="banners_prontos.zip", mime="application/zip")
+
 
 
