@@ -9,7 +9,7 @@ import requests
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-st.set_page_config(page_title="Gerador Premium + Preview", page_icon="📱", layout="wide")
+st.set_page_config(page_title="Gerador de Banner/Skin", page_icon="📱", layout="wide")
 
 # ==============================================================================
 # ÍCONE BASE64 (MANTENHA O SEU CÓDIGO GIGANTE AQUI!)
@@ -66,8 +66,7 @@ def image_to_base64(image):
 # --- FUNÇÃO DO MOCKUP (SIMULADOR) ---
 def gerar_preview_html(banner_img, primary_color, text_color):
     banner_b64 = image_to_base64(banner_img)
-    
-   html = f"""
+html = f"""
     <!DOCTYPE html>
     <html>
     <head>
@@ -285,6 +284,7 @@ if uploaded_logos:
                         st.markdown(html_preview, unsafe_allow_html=True)
 
         st.download_button("📦 Baixar ZIP Completo", data=zip_buffer.getvalue(), file_name="kit_completo.zip", mime="application/zip")
+
 
 
 
